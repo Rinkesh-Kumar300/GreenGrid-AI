@@ -1,0 +1,631 @@
+/* =========================================================
+   GreenGrid AI - Dashboard Styles
+   ========================================================= */
+
+/* ---------- RESET ---------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* ---------- BODY / ENVIRONMENT BACKGROUND ---------- */
+body {
+  min-height: 100vh;
+  font-family: Arial, Helvetica, sans-serif;
+  color: #1f2933;
+
+  /* Green-energy scene: sky + foliage + city + solar panels — pure CSS, no image file */
+  background-color: #a8d8b0;
+  background-image:
+    /* === LEFT foliage overlay === */
+    radial-gradient(ellipse 18% 60% at 3% 55%,  #2d6a2d 0%, transparent 100%),
+    radial-gradient(ellipse 14% 45% at 0%  40%,  #3a8c3a 0%, transparent 100%),
+    radial-gradient(ellipse 12% 35% at 5%  75%,  #1e5c1e 0%, transparent 100%),
+    /* === RIGHT foliage overlay === */
+    radial-gradient(ellipse 18% 60% at 97% 55%, #2d6a2d 0%, transparent 100%),
+    radial-gradient(ellipse 14% 50% at 100% 35%, #3a8c3a 0%, transparent 100%),
+    radial-gradient(ellipse 12% 40% at 95% 70%, #1e5c1e 0%, transparent 100%),
+    /* === CITY silhouette (right side) === */
+    linear-gradient(to top,
+      rgba(180,210,190,0.0) 0%,
+      rgba(180,210,190,0.0) 40%,
+      rgba(100,155,115,0.55) 41%,
+      rgba(100,155,115,0.55) 55%,
+      rgba(80,130,95,0.50)  56%,
+      rgba(80,130,95,0.50)  65%,
+      rgba(60,110,75,0.45)  66%,
+      rgba(60,110,75,0.45)  75%,
+      rgba(180,210,190,0.0) 76%
+    ),
+    /* === SOLAR PANEL glow (bottom right) === */
+    radial-gradient(ellipse 30% 20% at 82% 92%, rgba(70,140,200,0.35) 0%, transparent 100%),
+    /* === Ground green strip === */
+    linear-gradient(to top, #3a7d44 0%, #4a9e5c 8%, transparent 18%),
+    /* === Sky gradient top → mid === */
+    linear-gradient(to bottom,
+      #7ec8e3 0%,
+      #a8dce8 20%,
+      #c5e8c5 45%,
+      #a8d8a8 70%,
+      #7ab87a 100%
+    );
+
+  background-size: cover;
+  background-attachment: fixed;
+
+  display: flex;
+  flex-direction: column;
+}
+
+/* =========================================================
+   HEADER
+   ========================================================= */
+
+header {
+  background: #176b3a;
+  color: white;
+  padding: 14px 24px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.header-inner {
+  width: 100%;
+  max-width: 1100px;
+  margin: auto;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.logo {
+  font-size: 1.35rem;
+  font-weight: 700;
+  letter-spacing: 0.4px;
+}
+
+.sdg-badge {
+  background: rgba(255, 255, 255, 0.16);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-radius: 20px;
+
+  padding: 6px 14px;
+
+  font-size: 0.8rem;
+  color: white;
+}
+
+/* =========================================================
+   MAIN DASHBOARD
+   ========================================================= */
+
+main {
+  flex: 1;
+
+  width: 100%;
+  max-width: 1100px;
+
+  margin: 26px auto;
+  padding: 0 16px;
+
+  display: grid;
+  grid-template-columns: 340px 1fr;
+
+  gap: 20px;
+  align-items: start;
+}
+
+/* =========================================================
+   CARDS
+   ========================================================= */
+
+.card {
+  background: rgba(255, 255, 255, 0.91);
+
+  border: 1px solid rgba(190, 220, 197, 0.9);
+  border-radius: 12px;
+
+  padding: 22px 24px;
+
+  box-shadow:
+    0 8px 25px rgba(32, 80, 45, 0.10);
+
+  backdrop-filter: blur(7px);
+}
+
+.card h2 {
+  font-size: 1rem;
+  font-weight: 600;
+
+  color: #176b3a;
+
+  margin-bottom: 18px;
+  padding-bottom: 10px;
+
+  border-bottom: 1px solid #dce7df;
+}
+
+/* =========================================================
+   FORM LABELS
+   ========================================================= */
+
+label {
+  display: flex;
+  flex-direction: column;
+
+  gap: 6px;
+  margin-bottom: 15px;
+
+  font-size: 0.84rem;
+  color: #4b5963;
+}
+
+/* =========================================================
+   INPUTS
+   ========================================================= */
+
+input[type="number"],
+select {
+  width: 100%;
+
+  padding: 9px 11px;
+
+  border: 1px solid #cbd7ce;
+  border-radius: 7px;
+
+  background: rgba(248, 250, 249, 0.95);
+
+  color: #1f2933;
+  font-size: 0.95rem;
+
+  outline: none;
+
+  transition: 0.2s ease;
+}
+
+input[type="number"]:focus,
+select:focus {
+  border-color: #176b3a;
+
+  box-shadow:
+    0 0 0 2px rgba(23, 107, 58, 0.12);
+}
+
+/* =========================================================
+   RANGE SLIDERS
+   ========================================================= */
+
+input[type="range"] {
+  width: 100%;
+
+  margin-top: 2px;
+
+  accent-color: #1683e8;
+
+  cursor: pointer;
+}
+
+.range-val {
+  margin-top: 2px;
+
+  font-size: 0.85rem;
+
+  color: #176b3a;
+
+  font-weight: 600;
+}
+
+/* =========================================================
+   RUN ANALYSIS BUTTON
+   ========================================================= */
+
+button#run-btn {
+  width: 100%;
+
+  margin-top: 2px;
+  padding: 11px 16px;
+
+  border: none;
+  border-radius: 7px;
+
+  background: #176b3a;
+  color: white;
+
+  font-size: 0.95rem;
+  font-weight: 700;
+
+  cursor: pointer;
+
+  transition:
+    background 0.2s ease,
+    transform 0.1s ease,
+    box-shadow 0.2s ease;
+}
+
+button#run-btn:hover {
+  background: #11552e;
+
+  box-shadow:
+    0 4px 10px rgba(23, 107, 58, 0.22);
+}
+
+button#run-btn:active {
+  transform: scale(0.98);
+}
+
+button#run-btn:disabled {
+  background: #8aa895;
+  cursor: not-allowed;
+}
+
+/* =========================================================
+   STATUS MESSAGE
+   ========================================================= */
+
+.status-msg {
+  min-height: 20px;
+
+  margin-top: 10px;
+
+  text-align: center;
+
+  font-size: 0.84rem;
+
+  color: #57606a;
+}
+
+/* =========================================================
+   PLACEHOLDER
+   ========================================================= */
+
+.placeholder {
+  padding: 32px 16px;
+
+  border: 2px dashed #cbdccc;
+  border-radius: 8px;
+
+  text-align: center;
+
+  color: #78907d;
+
+  font-size: 0.9rem;
+
+  background: rgba(250, 253, 250, 0.6);
+}
+
+/* =========================================================
+   ACTUAL VS PREDICTED
+   ========================================================= */
+
+.compare-block {
+  margin-bottom: 20px;
+}
+
+.compare-row {
+  display: flex;
+
+  align-items: center;
+
+  gap: 10px;
+
+  margin-bottom: 10px;
+}
+
+.compare-label {
+  width: 68px;
+
+  flex-shrink: 0;
+
+  font-size: 0.82rem;
+
+  color: #57606a;
+}
+
+.bar-wrap {
+  flex: 1;
+
+  height: 18px;
+
+  overflow: hidden;
+
+  background: #e9f0eb;
+
+  border-radius: 5px;
+}
+
+.bar {
+  height: 100%;
+
+  min-width: 2px;
+
+  border-radius: 5px;
+
+  transition: width 0.5s ease;
+}
+
+.bar-actual {
+  background: #e05c3a;
+}
+
+.bar-predicted {
+  background: #176b3a;
+}
+
+.compare-num {
+  width: 58px;
+
+  flex-shrink: 0;
+
+  text-align: right;
+
+  font-size: 0.85rem;
+
+  font-weight: 600;
+}
+
+/* =========================================================
+   METRICS
+   ========================================================= */
+
+.metrics-grid {
+  display: grid;
+
+  grid-template-columns: repeat(3, 1fr);
+
+  gap: 12px;
+
+  margin-bottom: 22px;
+}
+
+.metric {
+  padding: 13px 10px;
+
+  text-align: center;
+
+  background: rgba(247, 249, 248, 0.92);
+
+  border: 1px solid #dce3df;
+
+  border-radius: 8px;
+}
+
+.metric-label {
+  display: block;
+
+  margin-bottom: 5px;
+
+  font-size: 0.75rem;
+
+  color: #57606a;
+}
+
+.metric-value {
+  display: block;
+
+  font-size: 1.05rem;
+
+  font-weight: 700;
+
+  color: #1f2933;
+}
+
+.status-normal {
+  color: #176b3a;
+}
+
+.status-elevated {
+  color: #c97b1a;
+}
+
+.status-abnormal {
+  color: #c0392b;
+}
+
+/* =========================================================
+   RESULT SECTIONS
+   ========================================================= */
+
+.result-section {
+  margin-bottom: 20px;
+}
+
+.result-section h3 {
+  margin-bottom: 9px;
+
+  font-size: 0.85rem;
+
+  font-weight: 600;
+
+  color: #53616b;
+
+  text-transform: uppercase;
+
+  letter-spacing: 0.5px;
+}
+
+#factors-list {
+  padding-left: 19px;
+}
+
+#factors-list li {
+  margin-bottom: 4px;
+
+  color: #1f2933;
+
+  font-size: 0.9rem;
+}
+
+/* =========================================================
+   RAG GUIDANCE
+   ========================================================= */
+
+.rag-item {
+  margin-bottom: 9px;
+
+  padding: 11px 13px;
+
+  background: rgba(247, 252, 248, 0.94);
+
+  border: 1px solid #d3e4d7;
+
+  border-radius: 8px;
+}
+
+.rag-item-header {
+  display: flex;
+
+  justify-content: space-between;
+
+  align-items: center;
+
+  gap: 10px;
+
+  margin-bottom: 5px;
+}
+
+.rag-source {
+  font-size: 0.78rem;
+
+  color: #176b3a;
+
+  font-weight: 600;
+}
+
+.rag-score {
+  font-size: 0.75rem;
+
+  color: #89968d;
+}
+
+.rag-section {
+  margin-bottom: 5px;
+
+  font-size: 0.88rem;
+
+  font-weight: 600;
+
+  color: #1f2933;
+}
+
+.rag-text {
+  font-size: 0.82rem;
+
+  line-height: 1.55;
+
+  color: #57606a;
+}
+
+/* =========================================================
+   AI RECOMMENDATION
+   ========================================================= */
+
+.recommendation-box {
+  padding: 15px 17px;
+
+  background: rgba(240, 248, 242, 0.94);
+
+  border: 1px solid #b9d7c1;
+
+  border-left: 4px solid #176b3a;
+
+  border-radius: 8px;
+
+  color: #1f2933;
+
+  font-size: 0.9rem;
+
+  line-height: 1.7;
+
+  white-space: pre-wrap;
+
+  box-shadow:
+    0 3px 12px rgba(35, 90, 50, 0.06);
+}
+
+.recommendation-na {
+  color: #8a9a8a;
+
+  font-style: italic;
+}
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
+
+footer {
+  margin-top: auto;
+
+  padding: 16px 24px;
+
+  text-align: center;
+
+  font-size: 0.82rem;
+
+  color: #57606a;
+
+  background: rgba(255, 255, 255, 0.88);
+
+  border-top: 1px solid #d3e3d6;
+
+  backdrop-filter: blur(5px);
+}
+
+footer strong {
+  color: #176b3a;
+}
+
+/* =========================================================
+   RESPONSIVE DESIGN
+   ========================================================= */
+
+@media (max-width: 760px) {
+  main {
+    grid-template-columns: 1fr;
+
+    margin-top: 18px;
+  }
+
+  .header-inner {
+    justify-content: center;
+  }
+
+  .card {
+    padding: 20px;
+  }
+}
+
+@media (max-width: 600px) {
+  .metrics-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .compare-row {
+    gap: 7px;
+  }
+
+  .compare-label {
+    width: 60px;
+  }
+
+  .compare-num {
+    width: 52px;
+  }
+
+  header {
+    padding: 12px 16px;
+  }
+
+  .logo {
+    font-size: 1.15rem;
+  }
+
+  .sdg-badge {
+    font-size: 0.72rem;
+  }
+}

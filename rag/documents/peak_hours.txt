@@ -1,0 +1,26 @@
+TITLE: Managing Peak-Hour Energy Consumption
+SOURCE: peak_hours.txt
+TOPIC: Peak and off-peak tariffs, load shifting, demand management
+
+---
+
+SECTION: What Are Peak Hours and Why They Matter
+Electricity grids experience periods of very high demand, usually during morning commuter hours (07:00-10:00) and early evening (17:00-20:00). During these windows, utilities must bring expensive, less-efficient power plants online to meet demand, which raises both the cost of electricity and its carbon intensity. Many commercial electricity tariffs charge significantly higher rates per kWh during peak hours, sometimes two to three times the off-peak rate. Reducing consumption during these windows directly lowers bills and reduces grid stress.
+
+SECTION: Load Shifting to Off-Peak Hours
+Load shifting means deliberately moving flexible electricity tasks from peak windows to cheaper, lower-carbon off-peak periods such as late night (22:00-06:00) or weekends. Examples of shiftable loads include running dishwashers and washing machines overnight, scheduling battery charging for electric vehicles after 22:00, pre-cooling or pre-heating the building before the morning peak starts at 07:00, and running energy-intensive data processing or backup jobs during night hours when both cost and carbon intensity are lower.
+
+SECTION: Demand Response Programmes
+Many utilities offer demand response programmes that pay businesses to voluntarily reduce their consumption during grid stress events. Enrol your building to receive financial credits in exchange for temporarily curtailing non-critical loads such as non-essential lighting, HVAC setpoint relaxation by 1-2 degrees, or deferring electric vehicle charging. A building energy management system can automate demand response actions without requiring manual intervention from staff, making participation simple and reliable.
+
+SECTION: Reducing Peak-Hour HVAC Load
+HVAC systems are typically the single largest contributor to peak-hour demand in commercial buildings. Strategies to reduce this contribution include pre-cooling the building between 05:00 and 07:00 before the morning peak begins, raising the thermostat setpoint by 1-2 degrees Celsius during peak hours since occupants rarely notice a temporary change of this size, and using the building's thermal mass to absorb heat passively during peak periods. Switch non-critical ventilation zones to minimum fresh-air rates during peak windows to reduce fan energy.
+
+SECTION: On-Site Generation During Peak Hours
+If your building has solar photovoltaic panels or a battery storage system, prioritise using stored energy during peak hours to offset grid imports. A correctly sized battery system can shift a significant portion of a building's peak demand to stored solar energy generated during the middle of the day. This simultaneously reduces the electricity bill through peak avoidance, earns revenue from demand response programmes, and reduces the building's carbon footprint during the high-carbon peak period.
+
+SECTION: Lighting and Equipment During Peak Hours
+During peak hours, automatically dim non-critical lighting by 20-30% using occupancy and daylight sensors. Ensure vending machines, water coolers, and other plug loads are not running at full capacity during peak windows. Use timers or smart plugs to prevent large equipment such as laser printers and commercial coffee machines from powering on simultaneously during the morning peak. Staggering equipment start-up times by even five to ten minutes can meaningfully reduce the peak demand charge recorded by the meter.
+
+SECTION: Monitoring Peak Demand Charges
+Many commercial electricity contracts include a demand charge based on the highest 15-minute or 30-minute average power demand recorded during the billing period. A single unexpected spike can significantly inflate the monthly bill even if average consumption is low. Install a real-time power demand monitor and set automated alerts when demand approaches your contract threshold, so staff can take corrective action before an expensive demand peak is recorded on the meter.

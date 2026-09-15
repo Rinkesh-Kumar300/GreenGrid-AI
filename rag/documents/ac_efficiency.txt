@@ -1,0 +1,29 @@
+TITLE: Air Conditioning Efficiency and Optimisation
+SOURCE: ac_efficiency.txt
+TOPIC: AC systems, cooling efficiency, HVAC best practices
+
+---
+
+SECTION: Why AC Is the Biggest Energy Consumer in Hot Climates
+Air conditioning typically accounts for 40-60% of total electricity consumption in commercial buildings in warm climates. The energy demand is highest during heat waves when outdoor temperature and peak occupancy coincide. Keeping AC systems well-maintained and correctly sized for the building they serve is the single most impactful step a building manager can take to reduce energy bills and carbon emissions simultaneously.
+
+SECTION: Set the Thermostat Correctly
+Each degree of cooling below the recommended setpoint increases energy consumption by approximately 6-8%. The recommended office temperature for occupant comfort and energy efficiency is 24-26 degrees Celsius. Avoid setting the thermostat below 22 degrees because the additional cooling cost is significant while the comfort gain is minimal. Ensure thermostats are not located near heat sources such as printers, servers, or sunlit windows, which would cause them to call for unnecessary cooling and waste energy.
+
+SECTION: Regular Maintenance Saves Energy
+A dirty air filter forces the AC compressor to work harder and can increase energy consumption by up to 15%. Clean or replace filters every one to three months depending on occupancy and local air quality. Have refrigerant levels checked annually because low refrigerant reduces efficiency and can damage the compressor over time. Clean the condenser coils on the outdoor unit at least once a year to maintain heat-transfer efficiency. Inspect and seal ductwork joints to prevent cooled air from leaking into unconditioned spaces such as ceiling voids and wall cavities.
+
+SECTION: Use Economy Mode and Night Setback
+Most modern AC systems include an economy or eco mode that reduces cooling capacity during periods of lower heat load, such as early mornings and late evenings. Enable this mode to capture automatic savings without manual intervention. Set up a night setback schedule so that AC switches to a higher setpoint of 28-30 degrees Celsius outside of occupied hours rather than continuing to cool an empty building. A well-programmed building management system can automate these setbacks based on occupancy schedules, calendar events, and real-time sensor data.
+
+SECTION: Zoning and Occupancy-Based Cooling
+Avoid cooling unoccupied areas. Divide the building into HVAC zones so that empty rooms, meeting rooms, or storage areas can have their cooling reduced or switched off independently without affecting occupied spaces. Install carbon dioxide sensors to detect actual occupancy in real time and modulate the air supply accordingly. Variable Air Volume systems are significantly more efficient than fixed-volume systems because they match airflow precisely to the actual thermal load of each zone rather than running at full capacity regardless of need.
+
+SECTION: High-Efficiency Equipment Upgrades
+If AC equipment is more than 10-15 years old, replacing it with a modern inverter-driven system can reduce cooling energy consumption by 30-50%. Inverter-driven compressors continuously adjust their speed to match the exact cooling demand, avoiding the wasteful on-off cycling of older fixed-speed units that repeatedly start at full power even when only light cooling is needed. Look for systems with a high Energy Efficiency Ratio or Seasonal Energy Efficiency Ratio rating and consider whole-building lifecycle cost rather than purchase price alone when evaluating replacement options.
+
+SECTION: Natural Ventilation and Free Cooling
+During mild weather when outdoor temperature is below approximately 18 degrees Celsius, consider switching from mechanical cooling to natural ventilation by opening windows or operating ventilation louvres. Many modern HVAC systems support a free-cooling or economiser mode that draws cool outdoor air directly into the building rather than running the refrigeration cycle. This can reduce cooling energy consumption to near zero during spring and autumn months, delivering significant savings with no capital expenditure required.
+
+SECTION: Reducing Internal Heat Gains
+Every kilowatt of heat generated inside the building by equipment, lighting, or people must be removed by the AC system, consuming additional electricity. Fit window blinds or external shading devices to reduce solar heat gain in summer. Replace heat-generating halogen and fluorescent lights with LEDs, which produce far less heat per lumen. Relocate heat-intensive equipment such as server rooms and commercial kitchens to areas with dedicated exhaust systems so their heat load does not enter the main occupied and air-conditioned space.

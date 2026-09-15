@@ -1,0 +1,29 @@
+TITLE: Office and Commercial Building Energy Management
+SOURCE: office_energy_saving.txt
+TOPIC: Office energy management, appliance efficiency, occupancy, behavioural measures
+
+---
+
+SECTION: Computers and Monitors
+Desktop computers and monitors are significant contributors to office energy consumption. Enable power management settings so that monitors enter sleep mode after 5-10 minutes of inactivity and computers hibernate after 15-30 minutes. Replacing desktop computers with laptops or thin clients can reduce per-workstation energy use by 50-80% while delivering equivalent performance for most office tasks. Switch off all computers fully at the end of the working day rather than leaving them on standby or in sleep mode, as even low-power standby states accumulate significant consumption across a large office overnight.
+
+SECTION: Printers and Copiers
+Large multifunction printers and laser copiers consume substantial power even in standby mode. Consolidate multiple personal desktop printers into a smaller number of shared network devices to reduce the total number of machines drawing standby power throughout the day. Enable duplex (double-sided) printing as the default setting to reduce paper use as well as the energy consumed per document. Place printers on programmable timers so they power down completely outside of business hours rather than idling on standby overnight and through weekends.
+
+SECTION: Server Rooms and IT Equipment
+Server rooms are among the highest energy-intensity spaces in any office building, often consuming more energy per square metre than any other area. Virtualise physical servers to reduce the total number of machines required, as running one server at 80% utilisation is far more efficient than running four servers at 20% each. Ensure server room air conditioning is set to the correct temperature range recommended by equipment manufacturers (typically 18-27 degrees Celsius). Use blanking panels in server racks to prevent hot exhaust air from recirculating to cold air inlets and switch off decommissioned servers rather than leaving them running at near-zero utilisation.
+
+SECTION: Kitchen and Catering Appliances
+Commercial refrigerators, dishwashers, coffee machines, and vending machines all contribute meaningfully to office energy consumption. Ensure refrigerators are set to the correct temperature (3-5 degrees for food, minus 18 for freezers) because over-cooling wastes energy without improving food safety. Clean refrigerator door seals regularly and replace worn seals promptly to prevent cold air leakage. Switch off hot water urns, toasters, and coffee machines at the end of the working day. Consider replacing old refrigeration equipment with modern high-efficiency alternatives when they reach end of life.
+
+SECTION: Occupancy-Based Control Systems
+Installing occupancy sensors in meeting rooms, corridors, toilets, and storage areas allows lighting and HVAC to switch off automatically when spaces are unoccupied. Studies show that occupancy-controlled lighting alone reduces lighting energy use by 30-50% in offices where people frequently move between spaces throughout the day. Combine occupancy sensors with daylight sensors for maximum savings: a sensor that detects both occupancy and sufficient natural light will avoid switching on artificial lighting during bright daytime hours, capturing savings from both lighting and sensor investment simultaneously.
+
+SECTION: Flexible and Remote Working Policies
+Allowing staff to work from home on certain days reduces office occupancy and therefore reduces the building's heating, cooling, lighting, and equipment load proportionally. Buildings that shift from five-day to three-day office attendance can typically reduce energy consumption by 30-40% without any investment in equipment or controls. Pair flexible working policies with a hot-desking strategy so unoccupied floors can be completely closed down on low-attendance days, concentrating occupants and their energy load into a smaller number of efficiently heated, cooled, and lit zones.
+
+SECTION: Energy Audits and Benchmarking
+Commission a professional energy audit every two to three years to identify hidden waste, outdated equipment, and control system faults that routine monitoring may miss. Compare your building's energy use intensity in kilowatt-hours per square metre per year against benchmarks for similar building types and climate zones. Buildings performing above the benchmark have the greatest potential for low-cost improvements. Publish results internally to maintain accountability, motivate staff engagement with saving initiatives, and demonstrate progress to leadership and external stakeholders.
+
+SECTION: Appliance Procurement Policy
+When replacing any electrical equipment, make energy efficiency labelling such as Energy Star certification a mandatory procurement requirement. The most efficient appliances in each product category typically consume 20-40% less energy than the least efficient models, with little or no difference in purchase price or performance for most product types. Avoid purchasing unnecessarily large or powerful equipment because a device that is significantly oversized for its actual workload runs inefficiently at partial load and often costs more to operate than a correctly sized alternative.

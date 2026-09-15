@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GreenGrid AI Dashboard</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ── Header ─────────────────────────────────────────────────────────── -->
+  <header>
+    <div class="header-inner">
+      <span class="logo">⚡ GreenGrid AI</span>
+      <span class="sdg-badge">SDG 7 — Affordable &amp; Clean Energy</span>
+    </div>
+  </header>
+
+  <!-- ── Main layout ────────────────────────────────────────────────────── -->
+  <main>
+
+    <!-- Left panel: inputs -->
+    <section class="card" id="input-panel">
+      <h2>Building Inputs</h2>
+
+      <label>Temperature (°C)
+        <input type="number" id="temperature" value="32" min="-30" max="60" step="0.5" />
+      </label>
+
+      <label>Building Type
+        <select id="building_type">
+          <option value="office">Office</option>
+          <option value="residential">Residential</option>
+          <option value="retail">Retail</option>
+        </select>
+      </label>
+
+      <label>Occupants
+        <input type="number" id="occupants" value="40" min="0" max="5000" />
+      </label>
+
+      <label>AC Usage (model units)
+        <input type="range" id="ac_usage" value="6" min="0" max="11" step="0.1"
+               oninput="document.getElementById('ac_val').textContent = this.value" />
+        <span class="range-val" id="ac_val">6</span>
+      </label>
+
+      <label>Appliance Usage (model units)
+        <input type="range" id="appliance_usage" value="3" min="0" max="7" step="0.1"
+               oninput="document.getElementById('app_val').textContent = this.value" />
+        <span class="range-val" id="app_val">3</span>
+      </label>
+
+      <label>Peak Hour
+        <select id="peak_hour">
+          <option value="1">Yes (peak)</option>
+          <option value="0">No (off-peak)</option>
+        </select>
+      </label>
+
+      <label>Actual Consumption (kWh/hour)
+        <input type="number" id="actual_consumption" value="15" min="1" max="20" step="0.1" />
+      </label>
+
+      <button id="run-btn" onclick="runAnalysis()">Run Analysis</button>
+      <p id="status-msg" class="status-msg"></p>
+    </section>
+
+    <!-- Right panel: results -->
+    <section class="card" id="results-panel">
+      <h2>Analysis Results</h2>
+      <div id="results-placeholder" class="placeholder">
+        Results will appear here after you click <strong>Run Analysis</strong>.
+      </div>
+      <div id="results-content" style="display:none;">
+
+        <!-- Consumption comparison bar -->
+        <div class="compare-block">
+          <div class="compare-row">
+            <span class="compare-label">Actual</span>
+            <div class="bar-wrap">
+              <div class="bar bar-actual" id="bar-actual"></div>
+            </div>
+            <span class="compare-num" id="num-actual">—</span>
+          </div>
+          <div class="compare-row">
+            <span class="compare-label">Predicted</span>
+            <div class="bar-wrap">
+              <div class="bar bar-predicted" id="bar-predicted"></div>
+            </div>
+            <span class="compare-num" id="num-predicted">—</span>
+          </div>
+        </div>
+
+        <!-- Key metrics -->
+        <div class="metrics-grid">
+          <div class="metric">
+            <span class="metric-label">Deviation</span>
+            <span class="metric-value" id="m-deviation">—</span>
+          </div>
+          <div class="metric">
+            <span class="metric-label">Status</span>
+            <span class="metric-value metric-status" id="m-status">—</span>
+          </div>
+          <div class="metric">
+            <span class="metric-label">Est. Savings</span>
+            <span class="metric-value" id="m-savings">—</span>
+          </div>
+        </div>
+
+        <!-- Possible factors -->
+        <div class="result-section">
+          <h3>Possible Factors</h3>
+          <ul id="factors-list"></ul>
+        </div>
+
+        <!-- RAG guidance -->
+        <div class="result-section">
+          <h3>Relevant Guidance</h3>
+          <div id="rag-list"></div>
+        </div>
+
+        <!-- AI recommendation -->
+        <div class="result-section">
+          <h3>AI Recommendation</h3>
+          <div id="recommendation-box" class="recommendation-box"></div>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ── SDG 7 footer note ───────────────────────────────────────────────── -->
+  <footer>
+    <p>
+      <strong>GreenGrid AI</strong> helps identify unnecessary energy consumption
+      and provides AI-powered recommendations for more efficient energy use —
+      aligned with <strong>UN SDG 7: Affordable and Clean Energy</strong>.
+    </p>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
