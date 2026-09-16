@@ -1,7 +1,7 @@
 // GreenGrid AI — Dashboard JavaScript
 // Calls POST /analyze on the FastAPI backend and renders the results.
 
-const API_URL = "http://127.0.0.1:8001/analyze";
+const API_URL = "https://your-railway-url.up.railway.app/analyze";
 
 async function runAnalysis() {
   const btn    = document.getElementById("run-btn");
