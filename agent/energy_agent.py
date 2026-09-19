@@ -297,20 +297,23 @@ def run_agent(actual_kwh: float, row: dict) -> dict:
     # ── Step 5: Build the prompt ───────────────────────────────────────────────
     user_prompt = _build_user_prompt(anomaly_result, rag_results, row)
 
-    # ── Step 6: Call Ollama ────────────────────────────────────────────────────
     # ── Step 6: Call OpenAI ────────────────────────────────────────────────────
+    recommendation = None
+    ollama_error   = None
     try:
         from openai import OpenAI
 
         client = OpenAI()
 
-        response = client.responses.create(
-            model="gpt-5.6-luna",
-            instructions=SYSTEM_PROMPT,
-            input=user_prompt,
+        response = client.chat.completions.create(
+            model="gpt-4o-mini",
+            messages=[
+                {"role": "system", "content": SYSTEM_PROMPT},
+                {"role": "user",   "content": user_prompt},
+            ],
         )
 
-        recommendation = response.output_text.strip()
+        recommendation = response.choices[0].message.content.strip()
 
     except Exception as exc:
         recommendation = None
