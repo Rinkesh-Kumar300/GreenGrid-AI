@@ -298,56 +298,34 @@ def run_agent(actual_kwh: float, row: dict) -> dict:
     user_prompt = _build_user_prompt(anomaly_result, rag_results, row)
 
     # ── Step 6: Call Ollama ────────────────────────────────────────────────────
+    # ── Step 6: Call OpenAI ────────────────────────────────────────────────────
     try:
         from openai import OpenAI
 
-           client = OpenAI()
+        client = OpenAI()
 
-          response = client.responses.create(
-          model="gpt-5.6-luna",
-          instructions=SYSTEM_PROMPT,
-          input=user_prompt,
-)
+        response = client.responses.create(
+            model="gpt-5.6-luna",
+            instructions=SYSTEM_PROMPT,
+            input=user_prompt,
+        )
 
-recommendation = response.output_text.strip()
+        recommendation = response.output_text.strip()
+
     except Exception as exc:
         recommendation = None
-        ollama_error   = f"Ollama inference failed: {exc}"
-    else:
-        ollama_error = rag_warning  # pass RAG warning through if any
+        ollama_error = f"LLM inference failed: {exc}"
 
     # ── Step 7: Assemble and return the final result ───────────────────────────
     return {
-        "actual_consumption"   : anomaly_result["actual_consumption"],
+        "actual_consumption": anomaly_result["actual_consumption"],
         "predicted_consumption": anomaly_result["predicted_consumption"],
-        "difference_kwh"       : anomaly_result["difference_kwh"],
-        "deviation_percent"    : anomaly_result["deviation_percent"],
-        "status"               : anomaly_result["status"],
-        "possible_factors"     : anomaly_result["possible_factors"],
-        "retrieved_guidance"   : rag_results,
-        "recommendation"       : recommendation,
+        "difference_kwh": anomaly_result["difference_kwh"],
+        "deviation_percent": anomaly_result["deviation_percent"],
+        "status": anomaly_result["status"],
+        "possible_factors": anomaly_result["possible_factors"],
+        "retrieved_guidance": rag_results,
+        "recommendation": recommendation,
         "estimated_savings_pct": _estimate_savings(anomaly_result),
-        "error"                : ollama_error,
-    }
-
-
-# ── Helper: build an error result with all keys present ──────────────────────
-
-def _error_result(message: str) -> dict:
-    """
-    Return a fully-keyed result dict with all fields set to safe defaults
-    and the error message populated.  This ensures callers always get a
-    consistent shape regardless of what went wrong.
-    """
-    return {
-        "actual_consumption"   : None,
-        "predicted_consumption": None,
-        "difference_kwh"       : None,
-        "deviation_percent"    : None,
-        "status"               : None,
-        "possible_factors"     : [],
-        "retrieved_guidance"   : [],
-        "recommendation"       : None,
-        "estimated_savings_pct": 0.0,
-        "error"                : message,
+        "error": ollama_error,
     }
