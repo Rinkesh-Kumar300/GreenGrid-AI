@@ -303,21 +303,20 @@ def run_agent(actual_kwh: float, row: dict) -> dict:
     try:
         from openai import OpenAI
 
-        client = OpenAI()
-
+        client   = OpenAI()   # reads OPENAI_API_KEY from env automatically
         response = client.chat.completions.create(
             model="gpt-4o-mini",
             messages=[
                 {"role": "system", "content": SYSTEM_PROMPT},
                 {"role": "user",   "content": user_prompt},
             ],
+            temperature=0.3,
+            max_tokens=500,
         )
-
         recommendation = response.choices[0].message.content.strip()
 
     except Exception as exc:
-        recommendation = None
-        ollama_error = f"LLM inference failed: {exc}"
+        ollama_error = f"OpenAI inference failed: {exc}"
 
     # ── Step 7: Assemble and return the final result ───────────────────────────
     return {

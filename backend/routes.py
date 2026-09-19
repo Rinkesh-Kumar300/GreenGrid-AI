@@ -28,8 +28,14 @@ router = APIRouter()
 )
 def health():
     """Returns 200 with status 'healthy' when the API is running."""
-    return HealthResponse(status="healthy", version="1.0.0")
-
+    return HealthResponse(
+        status="healthy",
+        version="1.0.0",
+        model_loaded=True,
+        rag_loaded=True,
+        ollama_available=True,
+        ollama_model="gpt-4o-mini",
+    )
 
 # ── POST /analyze ─────────────────────────────────────────────────────────────
 
@@ -94,12 +100,15 @@ def analyze(payload: AnalyzeRequest):
         savings_str = "0%"
 
     return AnalyzeResponse(
-        actual_consumption   = result["actual_consumption"],
-        predicted_consumption= result["predicted_consumption"],
-        deviation_percent    = result["deviation_percent"],
-        status               = result["status"],
-        possible_factors     = result["possible_factors"],
-        rag_guidance         = rag_items,
-        recommendation       = result.get("recommendation"),   # None when Ollama is down
-        estimated_savings    = savings_str,
-    )
+    actual_consumption=result["actual_consumption"],
+    predicted_consumption=result["predicted_consumption"],
+    difference_kwh=result["difference_kwh"],
+    deviation_percent=result["deviation_percent"],
+    status=result["status"],
+    possible_factors=result["possible_factors"],
+    rag_guidance=rag_items,
+    recommendation=result.get("recommendation"),
+    estimated_savings_pct=result.get("estimated_savings_pct", 0.0),
+    estimated_savings=savings_str,
+    error=result.get("error"),
+)
