@@ -292,33 +292,24 @@ def run_agent(actual_kwh: float, row: dict) -> dict:
         rag_warning = None
 
     # ── Step 4: Check Ollama availability ─────────────────────────────────────
-    ollama_ok, ollama_error = _check_ollama_available()
-    if not ollama_ok:
-        # Return a useful partial result even without the LLM
-        return {
-            **anomaly_result,
-            "retrieved_guidance"   : rag_results,
-            "recommendation"       : None,
-            "estimated_savings_pct": _estimate_savings(anomaly_result),
-            "error"                : ollama_error,
-        }
+    
 
     # ── Step 5: Build the prompt ───────────────────────────────────────────────
     user_prompt = _build_user_prompt(anomaly_result, rag_results, row)
 
     # ── Step 6: Call Ollama ────────────────────────────────────────────────────
     try:
-        import ollama
-        response = ollama.chat(
-            model   = OLLAMA_MODEL,
-            messages= [
-                {"role": "system", "content": SYSTEM_PROMPT},
-                {"role": "user",   "content": user_prompt},
-            ],
-        )
-        # The ollama Python library returns a ChatResponse object —
-        # access content via attribute, not dict subscript.
-        recommendation = response.message.content.strip()
+        from openai import OpenAI
+
+           client = OpenAI()
+
+          response = client.responses.create(
+          model="gpt-5.6-luna",
+          instructions=SYSTEM_PROMPT,
+          input=user_prompt,
+)
+
+recommendation = response.output_text.strip()
     except Exception as exc:
         recommendation = None
         ollama_error   = f"Ollama inference failed: {exc}"

@@ -17,6 +17,7 @@ chromadb>=0.5.0
 
 # LLM agent
 ollama>=0.2.0
+openai
 
 # Testing
 pytest>=8.1.0
