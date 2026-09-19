@@ -38,6 +38,9 @@ app.add_middleware(
 )
 
 from backend.routes import router
+# Register routes under /api so they match Vercel's routing (/api/health, /api/analyze)
+# and also at root level for local development (uvicorn backend.main:app)
+app.include_router(router, prefix="/api")
 app.include_router(router)
 
 if __name__ == "__main__":
