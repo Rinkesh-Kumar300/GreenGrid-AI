@@ -1,5 +1,5 @@
 # Python dependencies for GreenGrid AI
-# Install with:  pip install -r requirements.txt
+# Install with: pip install -r requirements.txt
 
 # Data & ML
 pandas>=2.1.0
@@ -12,11 +12,10 @@ fastapi>=0.111.0
 uvicorn[standard]>=0.29.0
 pydantic>=2.6.0
 
-# RAG / Vector store
-chromadb>=0.5.0
+# RAG
+# Lightweight TF-IDF retrieval using scikit-learn
 
 # LLM agent
-ollama>=0.2.0
 openai
 
 # Testing
