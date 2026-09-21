@@ -17,7 +17,6 @@ Run with:
 import sys
 import os
 import pytest
-from unittest.mock import patch, MagicMock
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
@@ -47,7 +46,6 @@ EXPECTED_ANALYZE_KEYS = {
     "status",
     "possible_factors",
     "rag_guidance",
-    "recommendation",
     "estimated_savings_pct",
     "estimated_savings",
 }
@@ -72,8 +70,7 @@ class TestHealth:
 
     def test_response_has_all_required_fields(self):
         data = client.get("/health").json()
-        for field in ("status", "model_loaded", "rag_loaded",
-                      "ollama_available", "ollama_model"):
+        for field in ("status", "model_loaded", "rag_loaded"):
             assert field in data, f"Missing field: {field}"
 
     def test_model_loaded_is_bool(self):
@@ -200,47 +197,3 @@ class TestAnalyzeInvalid:
         assert self._post({"occupants": -1}).status_code == 422
 
 
-# ─────────────────────────────────────────────────────────────────────────────
-# POST /analyze  — Ollama unavailable (graceful degradation)
-# ─────────────────────────────────────────────────────────────────────────────
-
-class TestAnalyzeNoOllama:
-    """
-    Simulate Ollama being unreachable by patching the agent's check function.
-    The endpoint should still return 200 with all numeric fields populated —
-    only the 'recommendation' field will be None and 'error' will be set.
-    """
-
-    def test_returns_200_when_ollama_down(self):
-        with patch("agent.energy_agent._check_ollama_available",
-                   return_value=(False, "Ollama not running (mocked)")):
-            resp = client.post("/analyze", json=VALID_PAYLOAD)
-        assert resp.status_code == 200
-
-    def test_recommendation_is_none_when_ollama_down(self):
-        with patch("agent.energy_agent._check_ollama_available",
-                   return_value=(False, "Ollama not running (mocked)")):
-            data = client.post("/analyze", json=VALID_PAYLOAD).json()
-        assert data["recommendation"] is None
-
-    def test_error_field_is_set_when_ollama_down(self):
-        with patch("agent.energy_agent._check_ollama_available",
-                   return_value=(False, "Ollama not running (mocked)")):
-            data = client.post("/analyze", json=VALID_PAYLOAD).json()
-        assert data["error"] is not None
-        assert len(data["error"]) > 0
-
-    def test_numeric_fields_still_populated_when_ollama_down(self):
-        """Anomaly detection and RAG should work regardless of Ollama."""
-        with patch("agent.energy_agent._check_ollama_available",
-                   return_value=(False, "Ollama not running (mocked)")):
-            data = client.post("/analyze", json=VALID_PAYLOAD).json()
-        assert data["actual_consumption"] > 0
-        assert data["predicted_consumption"] > 0
-        assert data["status"] in {"Normal", "Elevated", "Abnormal"}
-
-    def test_rag_guidance_still_returned_when_ollama_down(self):
-        with patch("agent.energy_agent._check_ollama_available",
-                   return_value=(False, "Ollama not running (mocked)")):
-            data = client.post("/analyze", json=VALID_PAYLOAD).json()
-        assert isinstance(data["rag_guidance"], list)

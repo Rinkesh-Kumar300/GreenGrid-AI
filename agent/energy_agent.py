@@ -300,25 +300,38 @@ def run_agent(actual_kwh: float, row: dict) -> dict:
     # ── Step 6: Call OpenAI ────────────────────────────────────────────────────
     recommendation = None
     ollama_error   = None
+    # ── Step 6: Generate AI recommendation using Gemini ──────────────────────
     try:
         from openai import OpenAI
+        import os
 
-        client   = OpenAI()   # reads OPENAI_API_KEY from env automatically
-        response = client.chat.completions.create(
-            model="gpt-4o-mini",
-            messages=[
-                {"role": "system", "content": SYSTEM_PROMPT},
-                {"role": "user",   "content": user_prompt},
-            ],
-            temperature=0.3,
-            max_tokens=500,
+        client = OpenAI(
+            api_key=os.environ.get("XAI_API_KEY"),
+            base_url="https://api.x.ai/v1"
         )
+
+        response = client.chat.completions.create(
+            model="grok-4.6",
+            messages=[
+                {
+                    "role": "system",
+                    "content": SYSTEM_PROMPT
+                },
+                {
+                    "role": "user",
+                    "content": user_prompt
+                }
+            ]
+        )
+
         recommendation = response.choices[0].message.content.strip()
 
     except Exception as exc:
-        ollama_error = f"OpenAI inference failed: {exc}"
+        recommendation = None
+        ollama_error = f"Gemini error: {type(exc).__name__}: {str(exc)}"
+        print(ollama_error)
 
-    # ── Step 7: Assemble and return the final result ───────────────────────────
+    # ── Step 7: Assemble and return the final result ─────────────────────────
     return {
         "actual_consumption": anomaly_result["actual_consumption"],
         "predicted_consumption": anomaly_result["predicted_consumption"],

@@ -131,17 +131,7 @@ function renderResults(d) {
     });
   }
 
-  // ── AI recommendation ────────────────────────────────────────────────────
-  const recBox = document.getElementById("recommendation-box");
-  if (d.recommendation) {
-    recBox.className   = "recommendation-box";
-    recBox.textContent = d.recommendation;
-  } else {
-    recBox.className   = "recommendation-box recommendation-na";
-    recBox.textContent = "Recommendation not available — Ollama may not be running.\n"
-                       + "Start Ollama with:  ollama serve";
-  }
-
+  
   // Show results panel
   document.getElementById("results-content").style.display = "block";
 }

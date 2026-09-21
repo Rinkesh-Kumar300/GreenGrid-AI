@@ -521,38 +521,8 @@ button#run-btn:disabled {
   color: #57606a;
 }
 
-/* =========================================================
-   AI RECOMMENDATION
-   ========================================================= */
 
-.recommendation-box {
-  padding: 15px 17px;
 
-  background: rgba(240, 248, 242, 0.94);
-
-  border: 1px solid #b9d7c1;
-
-  border-left: 4px solid #176b3a;
-
-  border-radius: 8px;
-
-  color: #1f2933;
-
-  font-size: 0.9rem;
-
-  line-height: 1.7;
-
-  white-space: pre-wrap;
-
-  box-shadow:
-    0 3px 12px rgba(35, 90, 50, 0.06);
-}
-
-.recommendation-na {
-  color: #8a9a8a;
-
-  font-style: italic;
-}
 
 /* =========================================================
    FOOTER
