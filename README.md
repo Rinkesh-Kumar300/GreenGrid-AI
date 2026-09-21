@@ -25,7 +25,7 @@ plain-English recommendations — all running 100% locally, no API keys required
 | Tool | Version | Notes |
 |------|---------|-------|
 | Python | 3.10 or higher | [python.org](https://www.python.org/downloads/) |
-| Ollama | latest | [ollama.com](https://ollama.com) — runs llama3 locally |
+
 
 ---
 
@@ -46,28 +46,7 @@ source .venv/bin/activate
 
 # 3. Install Python dependencies
 pip install -r requirements.txt
-```
 
----
-
-## Ollama Setup
-
-Ollama is the local LLM server. Install it once, pull the model once — it stays on disk.
-
-```bash
-# Download and install Ollama from https://ollama.com
-
-# Pull the llama3 model (~4 GB, one-time download)
-ollama pull llama3
-
-# Start the Ollama server (must be running before the backend)
-ollama serve
-```
-
-> **Note:** `ollama serve` needs to be running in a separate terminal whenever you use the dashboard.
-> The backend handles Ollama being unavailable gracefully — all other fields still work without it.
-
----
 
 ## First-Time Setup
 
@@ -153,57 +132,53 @@ curl -X POST http://localhost:8000/analyze \
 
 ## Project Structure
 
-```
 GreenGrid-AI/
 │
-├── data/
-│   ├── generate_dataset.py   # generates energy_data.csv
-│   ├── validate_dataset.py   # validates the CSV
-│   └── energy_data.csv       # synthetic hourly dataset (8,760 rows)
-│
-├── ml/
-│   ├── train_model.py        # trains forecasting model, saves to models/
-│   ├── predict.py            # predict_single() and predict_next_24h()
-│   └── anomaly.py            # detect() — compares actual vs predicted
-│
-├── models/
-│   ├── forecast_model.pkl             # saved Gradient Boosting model
-│   ├── forecast_feature_columns.pkl   # feature column order
-│   └── forecast_model_metadata.pkl    # metrics and config
-│
-├── rag/
-│   ├── documents/            # plain-text energy-saving knowledge base
-│   │   ├── energy_guidelines.txt
-│   │   ├── peak_hours.txt
-│   │   ├── ac_efficiency.txt
-│   │   └── office_energy_saving.txt
-│   ├── ingest.py             # chunks documents and loads into ChromaDB
-│   ├── retriever.py          # retrieve(query) → top-N relevant chunks
-│   └── chroma_db/            # ChromaDB vector store (created by ingest.py)
-│
 ├── agent/
-│   ├── config.py             # Ollama model name, prompt settings
-│   ├── energy_agent.py       # run_agent() — full pipeline entry point
-│   └── demo.py               # standalone demo script
+│   └── energy_agent.py
 │
 ├── backend/
-│   ├── main.py               # FastAPI app, CORS
-│   ├── models.py             # Pydantic request/response models
-│   └── routes.py             # GET /health, POST /analyze
+│   ├── main.py
+│   ├── models.py
+│   └── routes.py
+│
+├── data/
+│   └── energy_data.csv
 │
 ├── frontend/
-│   ├── index.html            # dashboard page
-│   ├── style.css             # styles
-│   └── app.js                # fetch() → /analyze → render results
+│   ├── index.html
+│   ├── app.js
+│   └── style.css
+│
+├── ml/
+│   ├── predict.py
+│   └── anomaly.py
+│
+├── models/
+│   └── energy_model.pkl
+│
+├── rag/
+│   ├── retriever.py
+│   ├── ac_efficiency.txt
+│   ├── peak_hours.txt
+│   ├── temperature_management.txt
+│   └── occupancy_management.txt
 │
 ├── tests/
-│   ├── test_anomaly.py       # 35 unit tests for ml/anomaly.py
-│   └── test_api.py           # FastAPI endpoint tests
+│   ├── test_api.py
+│   └── test_anomaly.py
 │
-├── greengrid-ai-plan.md      # implementation plan
-├── requirements.txt          # Python dependencies
-└── README.md                 # this file
-```
+├── .gitignore
+├── LICENSE
+├── README.md
+├── requirements.txt
+├── runtime.txt
+├── Procfile
+├── nixpacks.toml
+├── netlify.toml
+├── mise.toml
+├── greengrid-ai-plan.md
+└── start_greengrid.bat```
 
 ---
 
@@ -215,9 +190,8 @@ GreenGrid-AI/
 | 2 | ML forecasting model | ✓ Done |
 | 3 | Anomaly detection | ✓ Done |
 | 4 | RAG knowledge base (ChromaDB) | ✓ Done |
-| 5 | AI recommendation agent (Ollama) | ✓ Done |
-| 6 | FastAPI backend (`/health`, `/analyze`) | ✓ Done |
-| 7 | HTML dashboard | ✓ Done |
+| 5 | FastAPI backend (`/health`, `/analyze`) | ✓ Done |
+| 6 | HTML dashboard | ✓ Done |
 
 ---
 
