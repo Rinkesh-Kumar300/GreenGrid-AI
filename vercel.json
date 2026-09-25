@@ -1,47 +1,17 @@
 {
   "version": 2,
-  "builds": [
+  "rewrites": [
     {
-      "src": "api/index.py",
-      "use": "@vercel/python"
+      "source": "/",
+      "destination": "/frontend/index.html"
     },
     {
-      "src": "api/analyze.py",
-      "use": "@vercel/python"
+      "source": "/style.css",
+      "destination": "/frontend/style.css"
     },
     {
-      "src": "api/health.py",
-      "use": "@vercel/python"
-    },
-    {
-      "src": "frontend/**",
-      "use": "@vercel/static"
-    }
-  ],
-  "routes": [
-    {
-      "src": "/api/analyze",
-      "dest": "api/analyze.py"
-    },
-    {
-      "src": "/api/health",
-      "dest": "api/health.py"
-    },
-    {
-      "src": "/api/(.*)",
-      "dest": "api/index.py"
-    },
-    {
-      "src": "/style.css",
-      "dest": "frontend/style.css"
-    },
-    {
-      "src": "/app.js",
-      "dest": "frontend/app.js"
-    },
-    {
-      "src": "/(.*)",
-      "dest": "frontend/index.html"
+      "source": "/app.js",
+      "destination": "/frontend/app.js"
     }
   ]
 }
