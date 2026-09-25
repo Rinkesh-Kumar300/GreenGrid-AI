@@ -6,11 +6,27 @@
       "use": "@vercel/python"
     },
     {
+      "src": "api/analyze.py",
+      "use": "@vercel/python"
+    },
+    {
+      "src": "api/health.py",
+      "use": "@vercel/python"
+    },
+    {
       "src": "frontend/**",
       "use": "@vercel/static"
     }
   ],
   "routes": [
+    {
+      "src": "/api/analyze",
+      "dest": "api/analyze.py"
+    },
+    {
+      "src": "/api/health",
+      "dest": "api/health.py"
+    },
     {
       "src": "/api/(.*)",
       "dest": "api/index.py"
