@@ -1,10 +1,16 @@
 // GreenGrid AI — Dashboard JavaScript
 // Calls POST /analyze on the FastAPI backend and renders the results.
 
-// GreenGrid AI — Dashboard JavaScript
-// Calls POST /analyze on the FastAPI backend and renders the results.
+const API_URL = (() => {
+  // Opening frontend/index.html directly from disk uses a file:// URL, which
+  // cannot resolve a root-relative fetch like /api/analyze. Route requests to
+  // the local FastAPI backend instead.
+  if (window.location.protocol === "file:") {
+    return "http://localhost:8000/api/analyze";
+  }
 
-const API_URL = "/api/analyze";
+  return `${window.location.origin}/api/analyze`;
+})();
 
 async function runAnalysis() {
   const btn = document.getElementById("run-btn");
