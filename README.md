@@ -2,7 +2,7 @@
 
 > **Energy Consumption Forecasting & Optimization Agent — aligned with UN SDG 7: Affordable and Clean Energy**
 
-**Live Demo:** [greengrid-ai.vercel.app](https://greengrid-ai.vercel.app/)
+**Live Demo:** [green-grid-ai-09b.vercel.app](https://green-grid-ai-09b.vercel.app/)
 
 GreenGrid AI analyses historical building energy data, forecasts future consumption,
 detects abnormal usage, identifies likely causes, retrieves relevant energy-saving
