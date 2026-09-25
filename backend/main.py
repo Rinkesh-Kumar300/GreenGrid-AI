@@ -37,6 +37,19 @@ app.add_middleware(
     allow_headers     = ["*"],
 )
 
+
+@app.get("/", tags=["System"])
+def root():
+    """Returns a helpful status response at the deployment root."""
+
+    return {
+        "name": "GreenGrid AI API",
+        "status": "online",
+        "health": "/health",
+        "api_health": "/api/health",
+        "docs": "/docs",
+    }
+
 from backend.routes import router
 # Register routes under /api so they match Vercel's routing (/api/health, /api/analyze)
 # and also at root level for local development (uvicorn backend.main:app)
