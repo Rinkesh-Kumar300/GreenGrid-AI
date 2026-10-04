@@ -134,53 +134,62 @@ curl -X POST http://localhost:8000/analyze \
 
 ## Project Structure
 
+```text
 GreenGrid-AI/
-│
-├── agent/
-│   └── energy_agent.py
-│
-├── backend/
-│   ├── main.py
-│   ├── models.py
-│   └── routes.py
-│
-├── data/
-│   └── energy_data.csv
-│
-├── frontend/
-│   ├── index.html
-│   ├── app.js
-│   └── style.css
-│
-├── ml/
-│   ├── predict.py
-│   └── anomaly.py
-│
-├── models/
-│   └── energy_model.pkl
-│
-├── rag/
-│   ├── retriever.py
-│   ├── ac_efficiency.txt
-│   ├── peak_hours.txt
-│   ├── temperature_management.txt
-│   └── occupancy_management.txt
-│
-├── tests/
-│   ├── test_api.py
-│   └── test_anomaly.py
-│
-├── .gitignore
-├── LICENSE
-├── README.md
-├── requirements.txt
-├── runtime.txt
-├── Procfile
-├── nixpacks.toml
-├── netlify.toml
-├── mise.toml
-├── greengrid-ai-plan.md
-└── start_greengrid.bat```
+|-- agent/
+|   |-- config.py
+|   |-- demo.py
+|   `-- energy_agent.py
+|-- api/
+|   |-- analyze.py
+|   |-- health.py
+|   `-- index.py
+|-- backend/
+|   |-- main.py
+|   |-- models.py
+|   `-- routes.py
+|-- data/
+|   |-- energy_data.csv
+|   |-- generate_dataset.py
+|   |-- README.md
+|   `-- validate_dataset.py
+|-- frontend/
+|   |-- app.js
+|   |-- index.html
+|   `-- style.css
+|-- ml/
+|   |-- anomaly.py
+|   |-- predict.py
+|   `-- train_model.py
+|-- models/
+|   |-- forecast_feature_columns.pkl
+|   |-- forecast_model.pkl
+|   `-- forecast_model_metadata.pkl
+|-- rag/
+|   |-- chroma_db/ (generated ChromaDB store)
+|   |-- documents/
+|   |   |-- ac_efficiency.txt
+|   |   |-- energy_guidelines.txt
+|   |   |-- office_energy_saving.txt
+|   |   `-- peak_hours.txt
+|   |-- ingest.py
+|   `-- retriever.py
+|-- tests/
+|   |-- test_anomaly.py
+|   `-- test_api.py
+|-- .agent.md
+|-- .gitignore
+|-- LICENSE
+|-- greengrid-ai-plan.md
+|-- netlify.toml
+|-- nixpacks.toml
+|-- Procfile
+|-- README.md
+|-- requirements.txt
+|-- runtime.txt
+|-- start_greengrid.bat
+`-- vercel.json
+```
 
 ---
 
