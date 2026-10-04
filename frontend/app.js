@@ -9,7 +9,7 @@ const API_URL = (() => {
     return "http://localhost:8000/api/analyze";
   }
 
-  return `${window.location.origin}/analyze`;
+  return `${window.location.origin}/api/analyze`;
 })();
 
 async function runAnalysis() {
