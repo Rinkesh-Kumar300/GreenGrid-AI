@@ -13,6 +13,7 @@ Run locally:
 
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.staticfiles import StaticFiles
 
 app = FastAPI(
     title      = "GreenGrid AI API",
@@ -38,23 +39,12 @@ app.add_middleware(
 )
 
 
-@app.get("/", tags=["System"])
-def root():
-    """Returns a helpful status response at the deployment root."""
-
-    return {
-        "name": "GreenGrid AI API",
-        "status": "online",
-        "health": "/health",
-        "api_health": "/api/health",
-        "docs": "/docs",
-    }
-
 from backend.routes import router
 # Register routes under /api so they match Vercel's routing (/api/health, /api/analyze)
 # and also at root level for local development (uvicorn backend.main:app)
 app.include_router(router, prefix="/api")
 app.include_router(router)
+app.mount("/", StaticFiles(directory="frontend", html=True), name="frontend")
 
 if __name__ == "__main__":
     import uvicorn
